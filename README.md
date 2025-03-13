@@ -1,188 +1,188 @@
-# Data Portfolio: Excel to Power BI
+# Portfólio de Dados: Excel para Power BI
 
 ![excel-to-powerbi-animated-diagram](assets/images/kaggle_to_powerbi.gif)
 
-# Table of contents
+# Índice
 
-- [Objective](#objective)
-- [Data Source](#data-source)
-- [Stages](#stages)
+- [Objetivo](#objective)
+- [Fonte de Dados](#data-source)
+- [Etapas](#stages)
 - [Design](#design)
   - [Mockup](#mockup)
-  - [Tools](#tools)
-- [Development](#development)
-  - [Pseudocode](#pseudocode)
-  - [Data Exploration](#data-exploration)
-  - [Data Cleaning](#data-cleaning)
-  - [Transform the Data](#transform-the-data)
-  - [Create the SQL View](#create-the-sql-view)
-- [Testing](#testing)
-  - [Data Quality Tests](#data-quality-tests)
-- [Visualization](#visualization)
-  - [Results](#results)
-  - [DAX Measures](#dax-measures)
-- [Analysis](#analysis)
-  - [Findings](#findings)
-  - [Validation](#validation)
-  - [Discovery](#discovery)
-- [Recommendations](#recommendations)
-  - [Potential ROI](#potential-roi)
-  - [Potential Courses of Actions](#potential-courses-of-actions)
-- [Conclusion](#conclusion)
+  - [Ferramentas](#tools)
+- [Desenvolvimento](#development)
+  - [Pseudocódigo](#pseudocode)
+  - [Exploração de Dados](#data-exploration)
+  - [Limpeza de Dados](#data-cleaning)
+  - [Transformar os Dados](#transform-the-data)
+  - [Criar a Visualização SQL](#create-the-sql-view)
+- [Testes](#testing)
+  - [Testes de Qualidade de Dados](#data-quality-tests)
+- [Visualização](#visualization)
+  - [Resultados](#results)
+  - [Medidas DAX](#dax-measures)
+- [Análise](#analysis)
+  - [Descobertas](#findings)
+  - [Validação](#validation)
+  - [Descoberta](#discovery)
+- [Recomendações](#recommendations)
+  - [ROI Potencial](#potential-roi)
+  - [Potenciais Cursos de Ação](#potential-courses-of-actions)
+- [Conclusão](#conclusion)
 
-# Objective
+# Objetivo
 
-- What is the key pain point?
+- Qual é o principal ponto de dor?
 
-The Head of Marketing wants to find out who the top YouTubers are in 2024 to decide on which YouTubers would be best to run marketing campaigns throughout the rest of the year.
+O Chefe de Marketing quer descobrir quem são os principais YouTubers em 2024 para decidir quais seriam os melhores para realizar campanhas de marketing ao longo do ano.
 
-- What is the ideal solution?
+- Qual é a solução ideal?
 
-To create a dashboard that provides insights into the top UK YouTubers in 2024 that includes their
+Criar um painel que forneça insights sobre os principais YouTubers do Reino Unido em 2024, incluindo:
 
-- subscriber count
-- total views
-- total videos, and
-- engagement metrics
+- contagem de assinantes
+- total de visualizações
+- total de vídeos, e
+- métricas de engajamento
 
-This will help the marketing team make informed decisions about which YouTubers to collaborate with for their marketing campaigns.
+Isso ajudará a equipe de marketing a tomar decisões informadas sobre com quais YouTubers colaborar para suas campanhas de marketing.
 
-## User story
+## História do Usuário
 
-As the Head of Marketing, I want to use a dashboard that analyses YouTube channel data in the UK .
+Como Chefe de Marketing, quero usar um painel que analise dados de canais do YouTube no Reino Unido.
 
-This dashboard should allow me to identify the top performing channels based on metrics like subscriber base and average views.
+Este painel deve me permitir identificar os canais de melhor desempenho com base em métricas como base de assinantes e visualizações médias.
 
-With this information, I can make more informed decisions about which Youtubers are right to collaborate with, and therefore maximize how effective each marketing campaign is.
+Com essas informações, posso tomar decisões mais informadas sobre quais YouTubers são adequados para colaborar, maximizando assim a eficácia de cada campanha de marketing.
 
-# Data source
+# Fonte de Dados
 
-- What data is needed to achieve our objective?
+- Quais dados são necessários para alcançar nosso objetivo?
 
-We need data on the top UK YouTubers in 2024 that includes their
+Precisamos de dados sobre os principais YouTubers do Reino Unido em 2024, incluindo:
 
-- channel names
-- total subscribers
-- total views
-- total videos uploaded
+- nomes dos canais
+- total de assinantes
+- total de visualizações
+- total de vídeos enviados
 
-- Where is the data coming from?
-  The data is sourced from Kaggle (an Excel extract), [see here to find it.](https://www.kaggle.com/datasets/bhavyadhingra00020/top-100-social-media-influencers-2024-countrywise?resource=download)
+- De onde vêm os dados?
+  Os dados são provenientes do Kaggle (um extrato do Excel), [veja aqui para encontrá-los.](https://www.kaggle.com/datasets/bhavyadhingra00020/top-100-social-media-influencers-2024-countrywise?resource=download)
 
-# Stages
+# Etapas
 
 - Design
-- Developement
-- Testing
-- Analysis
+- Desenvolvimento
+- Testes
+- Análise
 
 # Design
 
-## Dashboard components required
+## Componentes necessários do painel
 
-- What should the dashboard contain based on the requirements provided?
+- O que o painel deve conter com base nos requisitos fornecidos?
 
-To understand what it should contain, we need to figure out what questions we need the dashboard to answer:
+Para entender o que deve conter, precisamos descobrir quais perguntas o painel precisa responder:
 
-1. Who are the top 10 YouTubers with the most subscribers?
-2. Which 3 channels have uploaded the most videos?
-3. Which 3 channels have the most views?
-4. Which 3 channels have the highest average views per video?
-5. Which 3 channels have the highest views per subscriber ratio?
-6. Which 3 channels have the highest subscriber engagement rate per video uploaded?
+1. Quem são os 10 principais YouTubers com mais assinantes?
+2. Quais 3 canais enviaram mais vídeos?
+3. Quais 3 canais têm mais visualizações?
+4. Quais 3 canais têm a maior média de visualizações por vídeo?
+5. Quais 3 canais têm a maior proporção de visualizações por assinante?
+6. Quais 3 canais têm a maior taxa de engajamento de assinantes por vídeo enviado?
 
-For now, these are some of the questions we need to answer, this may change as we progress down our analysis.
+Por enquanto, estas são algumas das perguntas que precisamos responder, isso pode mudar à medida que avançamos em nossa análise.
 
-## Dashboard mockup
+## Mockup do Painel
 
-- What should it look like?
+- Como deve ser?
 
-Some of the data visuals that may be appropriate in answering our questions include:
+Alguns dos visuais de dados que podem ser apropriados para responder às nossas perguntas incluem:
 
-1. Table
-2. Treemap
-3. Scorecards
-4. Horizontal bar chart
+1. Tabela
+2. Mapa de árvore
+3. Cartões de pontuação
+4. Gráfico de barras horizontal
 
 ![Dashboard-Mockup](assets/images/dashboard_mockup.png)
 
-## Tools
+## Ferramentas
 
-| Tool       | Purpose                                               |
-| ---------- | ----------------------------------------------------- |
-| Excel      | Exploring the data                                    |
-| SQL Server | Cleaning, testing, and analyzing the data             |
-| Power BI   | Visualizing the data via interactive dashboards       |
-| GitHub     | Hosting the project documentation and version control |
-| Mokkup AI  | Designing the wireframe/mockup of the dashboard       |
+| Ferramenta | Finalidade                                              |
+| ---------- | ------------------------------------------------------- |
+| Excel      | Explorar os dados                                       |
+| SQL Server | Limpar, testar e analisar os dados                      |
+| Power BI   | Visualizar os dados por meio de painéis interativos     |
+| GitHub     | Hospedar a documentação do projeto e controle de versão |
+| Mokkup AI  | Projetar o wireframe/mockup do painel                   |
 
-# Development
+# Desenvolvimento
 
-## Pseudocode
+## Pseudocódigo
 
-- What's the general approach in creating this solution from start to finish?
+- Qual é a abordagem geral para criar esta solução do início ao fim?
 
-1. Get the data
-2. Explore the data in Excel
-3. Load the data into SQL Server
-4. Clean the data with SQL
-5. Test the data with SQL
-6. Visualize the data in Power BI
-7. Generate the findings based on the insights
-8. Write the documentation + commentary
-9. Publish the data to GitHub Pages
+1. Obter os dados
+2. Explorar os dados no Excel
+3. Carregar os dados no SQL Server
+4. Limpar os dados com SQL
+5. Testar os dados com SQL
+6. Visualizar os dados no Power BI
+7. Gerar as descobertas com base nos insights
+8. Escrever a documentação + comentários
+9. Publicar os dados no GitHub Pages
 
-## Data exploration notes
+## Notas de exploração de dados
 
-This is the stage where you have a scan of what's in the data, errors, inconcsistencies, bugs, weird and corrupted characters etc
+Esta é a etapa em que você faz uma varredura do que há nos dados, erros, inconsistências, bugs, caracteres estranhos e corrompidos, etc.
 
-- What are your initial observations with this dataset? What's caught your attention so far?
+- Quais são suas observações iniciais com este conjunto de dados? O que chamou sua atenção até agora?
 
-1. There are at least 4 columns that contain the data we need for this analysis, which signals we have everything we need from the file without needing to contact the client for any more data.
-2. The first column contains the channel ID with what appears to be channel IDS, which are separated by a @ symbol - we need to extract the channel names from this.
-3. Some of the cells and header names are in a different language - we need to confirm if these columns are needed, and if so, we need to address them.
-4. We have more data than we need, so some of these columns would need to be removed
+1. Existem pelo menos 4 colunas que contêm os dados necessários para esta análise, o que sinaliza que temos tudo o que precisamos do arquivo sem precisar contatar o cliente para mais dados.
+2. A primeira coluna contém o ID do canal com o que parece ser IDs de canal, que são separados por um símbolo @ - precisamos extrair os nomes dos canais disso.
+3. Algumas das células e nomes de cabeçalho estão em um idioma diferente - precisamos confirmar se essas colunas são necessárias e, em caso afirmativo, precisamos abordá-las.
+4. Temos mais dados do que precisamos, então algumas dessas colunas precisariam ser removidas.
 
-## Data cleaning
+## Limpeza de dados
 
-- What do we expect the clean data to look like? (What should it contain? What contraints should we apply to it?)
+- Como esperamos que os dados limpos se pareçam? (O que deve conter? Quais restrições devemos aplicar a ele?)
 
-The aim is to refine our dataset to ensure it is structured and ready for analysis.
+O objetivo é refinar nosso conjunto de dados para garantir que esteja estruturado e pronto para análise.
 
-The cleaned data should meet the following criteria and constraints:
+Os dados limpos devem atender aos seguintes critérios e restrições:
 
-- Only relevant columns should be retained.
-- All data types should be appropriate for the contents of each column.
-- No column should contain null values, indicating complete data for all records.
+- Apenas colunas relevantes devem ser retidas.
+- Todos os tipos de dados devem ser apropriados para o conteúdo de cada coluna.
+- Nenhuma coluna deve conter valores nulos, indicando dados completos para todos os registros.
 
-Below is a table outlining the constraints on our cleaned dataset:
+Abaixo está uma tabela que descreve as restrições em nosso conjunto de dados limpo:
 
-| Property          | Description |
-| ----------------- | ----------- |
-| Number of Rows    | 100         |
-| Number of Columns | 4           |
+| Propriedade       | Descrição |
+| ----------------- | --------- |
+| Número de Linhas  | 100       |
+| Número de Colunas | 4         |
 
-And here is a tabular representation of the expected schema for the clean data:
+E aqui está uma representação tabular do esquema esperado para os dados limpos:
 
-| Column Name       | Data Type | Nullable |
-| ----------------- | --------- | -------- |
-| channel_name      | VARCHAR   | NO       |
-| total_subscribers | INTEGER   | NO       |
-| total_views       | INTEGER   | NO       |
-| total_videos      | INTEGER   | NO       |
+| Nome da Coluna         | Tipo de Dados | Nulável |
+| ---------------------- | ------------- | ------- |
+| nome_do_canal          | VARCHAR       | NÃO     |
+| total_de_assinantes    | INTEGER       | NÃO     |
+| total_de_visualizações | INTEGER       | NÃO     |
+| total_de_vídeos        | INTEGER       | NÃO     |
 
-- What steps are needed to clean and shape the data into the desired format?
+- Quais etapas são necessárias para limpar e moldar os dados no formato desejado?
 
-1. Remove unnecessary columns by only selecting the ones you need
-2. Extract Youtube channel names from the first column
-3. Rename columns using aliases
+1. Remover colunas desnecessárias selecionando apenas as que você precisa
+2. Extrair nomes de canais do YouTube da primeira coluna
+3. Renomear colunas usando aliases
 
-### Transform the data
+### Transformar os dados
 
 ```sql
 /*
-# 1. Select the required columns
-# 2. Extract the channel name from the 'NOMBRE' column
+# 1. Selecione as colunas necessárias
+# 2. Extraia o nome do canal da coluna 'NOMBRE'
 */
 
 -- 1.
@@ -196,13 +196,13 @@ FROM
     top_uk_youtubers_2024
 ```
 
-### Create the SQL view
+### Criar a Visualização SQL
 
 ```sql
 /*
-# 1. Create a view to store the transformed data
-# 2. Cast the extracted channel name as VARCHAR(100)
-# 3. Select the required columns from the top_uk_youtubers_2024 SQL table
+# 1. Crie uma visualização para armazenar os dados transformados
+# 2. Converta o nome do canal extraído para VARCHAR(100)
+# 3. Selecione as colunas necessárias da tabela SQL top_uk_youtubers_2024
 */
 
 -- 1.
@@ -221,17 +221,17 @@ FROM
 
 ```
 
-# Testing
+# Testes
 
-- What data quality and validation checks are you going to create?
+- Quais testes de qualidade e validação você vai criar?
 
-Here are the data quality tests conducted:
+Aqui estão os testes de qualidade de dados realizados:
 
-## Row count check
+## Verificação de contagem de linhas
 
 ```sql
 /*
-# Count the total number of records (or rows) are in the SQL view
+# Conte o número total de registros (ou linhas) na visualização SQL
 */
 
 SELECT
@@ -241,15 +241,15 @@ FROM
 
 ```
 
-![Row count check](assets/images/1_row_count_check.png)
+![Verificação de contagem de linhas](assets/images/1_row_count_check.png)
 
-## Column count check
+## Verificação de contagem de colunas
 
-### SQL query
+### Consulta SQL
 
 ```sql
 /*
-# Count the total number of columns (or fields) are in the SQL view
+# Conte o número total de colunas (ou campos) na visualização SQL
 */
 
 
@@ -261,17 +261,17 @@ WHERE
     TABLE_NAME = 'view_uk_youtubers_2024'
 ```
 
-### Output
+### Saída
 
-![Column count check](assets/images/2_column_count_check.png)
+![Verificação de contagem de colunas](assets/images/2_column_count_check.png)
 
-## Data type check
+## Verificação de tipo de dados
 
-### SQL query
+### Consulta SQL
 
 ```sql
 /*
-# Check the data types of each column from the view by checking the INFORMATION SCHEMA view
+# Verifique os tipos de dados de cada coluna da visualização verificando a visualização do SCHEMA DE INFORMAÇÃO
 */
 
 -- 1.
@@ -284,19 +284,19 @@ WHERE
     TABLE_NAME = 'view_uk_youtubers_2024';
 ```
 
-### Output
+### Saída
 
-![Data type check](assets/images/3_data_type_check.png)
+![Verificação de tipo de dados](assets/images/3_data_type_check.png)
 
-## Duplicate count check
+## Verificação de contagem de duplicatas
 
-### SQL query
+### Consulta SQL
 
 ```sql
 /*
-# 1. Check for duplicate rows in the view
-# 2. Group by the channel name
-# 3. Filter for groups with more than one row
+# 1. Verifique linhas duplicadas na visualização
+# 2. Agrupe pelo nome do canal
+# 3. Filtre para grupos com mais de uma linha
 */
 
 -- 1.
@@ -315,23 +315,23 @@ HAVING
     COUNT(*) > 1;
 ```
 
-### Output
+### Saída
 
-![Duplicate count check](assets/images/4_duplicate_records_check.png)
+![Verificação de contagem de duplicatas](assets/images/4_duplicate_records_check.png)
 
-# Visualization
+# Visualização
 
-## Results
+## Resultados
 
-- What does the dashboard look like?
+- Como o painel deve ser?
 
-![GIF of Power BI Dashboard](assets/images/top_uk_youtubers_2024.gif)
+![GIF do Painel do Power BI](assets/images/top_uk_youtubers_2024.gif)
 
-This shows the Top UK Youtubers in 2024 so far.
+Este mostra os Top UK Youtubers em 2024 até agora.
 
-## DAX Measures
+## Medidas DAX
 
-### 1. Total Subscribers (M)
+### 1. Total de Assinantes (M)
 
 ```sql
 Total Subscribers (M) =
@@ -343,7 +343,7 @@ RETURN totalSubscribers
 
 ```
 
-### 2. Total Views (B)
+### 2. Total de Visualizações (B)
 
 ```sql
 Total Views (B) =
@@ -355,7 +355,7 @@ RETURN totalViews
 
 ```
 
-### 3. Total Videos
+### 3. Total de Vídeos
 
 ```sql
 Total Videos =
@@ -365,7 +365,7 @@ RETURN totalVideos
 
 ```
 
-### 4. Average Views Per Video (M)
+### 4. Média de Visualizações por Vídeo (M)
 
 ```sql
 Average Views per Video (M) =
@@ -378,7 +378,7 @@ RETURN finalAvgViewsPerVideo
 
 ```
 
-### 5. Subscriber Engagement Rate
+### 5. Taxa de Engajamento de Assinantes
 
 ```sql
 Subscriber Engagement Rate =
@@ -390,7 +390,7 @@ RETURN subscriberEngRate
 
 ```
 
-### 6. Views per subscriber
+### 6. Visualizações por Assinante
 
 ```sql
 Views Per Subscriber =
@@ -402,24 +402,24 @@ RETURN viewsPerSubscriber
 
 ```
 
-# Analysis
+# Análise
 
-## Findings
+## Descobertas
 
-- What did we find?
+- O que encontramos?
 
-For this analysis, we're going to focus on the questions below to get the information we need for our marketing client -
+Para esta análise, vamos nos concentrar nas perguntas abaixo para obter as informações que precisamos para nosso cliente de marketing -
 
-Here are the key questions we need to answer for our marketing client:
+Aqui estão as principais perguntas que precisamos responder para nosso cliente:
 
-1. Who are the top 10 YouTubers with the most subscribers?
-2. Which 3 channels have uploaded the most videos?
-3. Which 3 channels have the most views?
-4. Which 3 channels have the highest average views per video?
-5. Which 3 channels have the highest views per subscriber ratio?
-6. Which 3 channels have the highest subscriber engagement rate per video uploaded?
+1. Quem são os 10 principais YouTubers com mais assinantes?
+2. Quais 3 canais enviaram mais vídeos?
+3. Quais 3 canais têm mais visualizações?
+4. Quais 3 canais têm a maior média de visualizações por vídeo?
+5. Quais 3 canais têm a maior proporção de visualizações por assinante?
+6. Quais 3 canais têm a maior taxa de engajamento de assinantes por vídeo enviado?
 
-### 1. Who are the top 10 YouTubers with the most subscribers?
+### 1. Quem são os 10 principais YouTubers com mais assinantes?
 
 | Rank | Channel Name      | Subscribers (M) |
 | ---- | ----------------- | --------------- |
@@ -434,7 +434,7 @@ Here are the key questions we need to answer for our marketing client:
 | 9    | Sidemen           | 21.00           |
 | 10   | Ali-A             | 18.90           |
 
-### 2. Which 3 channels have uploaded the most videos?
+### 2. Quais 3 canais enviaram mais vídeos?
 
 | Rank | Channel Name    | Videos Uploaded |
 | ---- | --------------- | --------------- |
@@ -442,7 +442,7 @@ Here are the key questions we need to answer for our marketing client:
 | 2    | Manchester City | 8,248           |
 | 3    | Yogscast        | 6,435           |
 
-### 3. Which 3 channels have the most views?
+### 3. Quais 3 canais têm mais visualizações?
 
 | Rank | Channel Name | Total Views (B) |
 | ---- | ------------ | --------------- |
@@ -450,7 +450,7 @@ Here are the key questions we need to answer for our marketing client:
 | 2    | Dan Rhodes   | 18.56           |
 | 3    | Mister Max   | 15.97           |
 
-### 4. Which 3 channels have the highest average views per video?
+### 4. Quais 3 canais têm a maior média de visualizações por vídeo?
 
 | Channel Name | Averge Views per Video (M) |
 | ------------ | -------------------------- |
@@ -458,7 +458,7 @@ Here are the key questions we need to answer for our marketing client:
 | Jessie J     | 5.97                       |
 | Dua Lipa     | 5.76                       |
 
-### 5. Which 3 channels have the highest views per subscriber ratio?
+### 5. Quais 3 canais têm a maior proporção de visualizações por assinante?
 
 | Rank | Channel Name     | Views per Subscriber |
 | ---- | ---------------- | -------------------- |
@@ -466,7 +466,7 @@ Here are the key questions we need to answer for our marketing client:
 | 2    | Nickelodeon      | 1061.04              |
 | 3    | Disney Junior UK | 1031.97              |
 
-### 6. Which 3 channels have the highest subscriber engagement rate per video uploaded?
+### 6. Quais 3 canais têm a maior taxa de engajamento de assinantes por vídeo enviado?
 
 | Rank | Channel Name | Subscriber Engagement Rate |
 | ---- | ------------ | -------------------------- |
@@ -474,69 +474,67 @@ Here are the key questions we need to answer for our marketing client:
 | 2    | Jessie J     | 110,416.67                 |
 | 3    | Dua Lipa     | 104,954.95                 |
 
-### Notes
+### Notas
 
-For this analysis, we'll prioritize analysing the metrics that are important in generating the expected ROI for our marketing client, which are the YouTube channels wuth the most
+Para esta análise, vamos priorizar analisar as métricas que são importantes para gerar o ROI esperado para nosso cliente de marketing, que são os canais do YouTube com mais
 
-- subscribers
-- total views
-- videos uploaded
+- assinantes
+- total de visualizações
+- vídeos enviados
 
-## Validation
+## Validação
 
-### 1. Youtubers with the most subscribers
+### 1. YouTubers com mais assinantes
 
-#### Calculation breakdown
+#### Descrição do Cálculo
 
-Campaign idea = product placement
+Ideia de campanha = colocação de produto
 
 1. NoCopyrightSounds
 
-- Average views per video = 6.92 million
-- Product cost = $5
-- Potential units sold per video = 6.92 million x 2% conversion rate = 138,400 units sold
-- Potential revenue per video = 138,400 x $5 = $692,000
-- Campaign cost (one-time fee) = $50,000
-- **Net profit = $692,000 - $50,000 = $642,000**
+- Média de visualizações por vídeo = 6,92 milhões
+- Custo do produto = $5
+- Unidades potenciais vendidas por vídeo = 6,92 milhões x 2% taxa de conversão = 138,400 unidades vendidas
+- Receita potencial por vídeo = 138,400 x $5 = $692,000
+- Custo da campanha (taxa única) = $50,000
+- **Lucro líquido = $692,000 - $50,000 = $642,000**
 
 b. DanTDM
 
-- Average views per video = 5.34 million
-- Product cost = $5
-- Potential units sold per video = 5.34 million x 2% conversion rate = 106,800 units sold
-- Potential revenue per video = 106,800 x $5 = $534,000
-- Campaign cost (one-time fee) = $50,000
-- **Net profit = $534,000 - $50,000 = $484,000**
+- Média de visualizações por vídeo = 5,34 milhões
+- Custo do produto = $5
+- Unidades potenciais vendidas por vídeo = 5,34 milhões x 2% taxa de conversão = 106,800 unidades vendidas
+- Receita potencial por vídeo = 106,800 x $5 = $534,000
+- Custo da campanha (taxa única) = $50,000
+- **Lucro líquido = $534,000 - $50,000 = $484,000**
 
 c. Dan Rhodes
 
-- Average views per video = 11.15 million
-- Product cost = $5
-- Potential units sold per video = 11.15 million x 2% conversion rate = 223,000 units sold
-- Potential revenue per video = 223,000 x $5 = $1,115,000
-- Campaign cost (one-time fee) = $50,000
-- **Net profit = $1,115,000 - $50,000 = $1,065,000**
+- Média de visualizações por vídeo = 11,15 milhões
+- Custo do produto = $5
+- Unidades potenciais vendidas por vídeo = 11,15 milhões x 2% taxa de conversão = 223,000 unidades vendidas
+- Receita potencial por vídeo = 223,000 x $5 = $1,115,000
+- Custo da campanha (taxa única) = $50,000
+- **Lucro líquido = $1,115,000 - $50,000 = $1,065,000**
 
-Best option from category: Dan Rhodes
+Melhor opção da categoria: Dan Rhodes
 
-#### SQL query
+#### Consulta SQL
 
 ```sql
 /*
-
-# 1. Define variables
-# 2. Create a CTE that rounds the average views per video
-# 3. Select the column you need and create calculated columns from existing ones
-# 4. Filter results by Youtube channels
-# 5. Sort results by net profits (from highest to lowest)
-
+# 1. Defina variáveis
+# 2. Crie um CTE que arredonda a média de visualizações por vídeo
+# 3. Selecione a coluna que você precisa e crie colunas calculadas a partir das existentes
+# 4. Filtre os resultados por canais do YouTube
+# 5. Ordene os resultados por lucros líquidos (do maior para o menor)
 */
 
 
 -- 1.
-DECLARE @conversionRate FLOAT = 0.02;		-- The conversion rate @ 2%
-DECLARE @productCost FLOAT = 5.0;			-- The product cost @ $5
-DECLARE @campaignCost FLOAT = 50000.0;		-- The campaign cost @ $50,000
+DECLARE @conversionRate FLOAT = 0.02;		-- A taxa de conversão @ 2%
+DECLARE @productCost FLOAT = 5.0;			-- O custo do produto @ $5
+DECLARE @campaignCost FLOAT = 50000.0;		-- O custo da campanha @ $50.000
 
 
 -- 2.
@@ -572,23 +570,23 @@ ORDER BY
 
 ```
 
-#### Output
+#### Saída
 
-![Most subsc](assets/images/youtubers_with_the_most_subs.png)
+![Mais assinantes](assets/images/youtubers_with_the_most_subs.png)
 
-### 2. Youtubers with the most videos uploaded
+### 2. YouTubers com mais vídeos enviados
 
-### Calculation breakdown
+### Descrição do Cálculo
 
-Campaign idea = sponsored video series
+Ideia de campanha = série de vídeos patrocinados
 
 1. GRM Daily
 
-- Average views per video = 510,000
-- Product cost = $5
-- Potential units sold per video = 510,000 x 2% conversion rate = 10,200 units sold
-- Potential revenue per video = 10,200 x $5= $51,000
-- Campaign cost (11-videos @ $5,000 each) = $55,000
+- Média de visualizações por vídeo = 510,000
+- Custo do produto = $5
+- Unidades potenciais vendidas por vídeo = 510,000 x 2% taxa de conversão = 10,200 unidades vendidas
+- Receita potencial por vídeo = 10,200 x $5= $51,000
+- Custo da campanha (11-videos @ $5,000 each) = $55,000
 - **Net profit = $51,000 - $55,000 = -$4,000 (potential loss)**
 
 b. **Manchester City**
@@ -615,11 +613,11 @@ Best option from category: Yogscast
 
 ```sql
 /*
-# 1. Define variables
-# 2. Create a CTE that rounds the average views per video
-# 3. Select the columns you need and create calculated columns from existing ones
-# 4. Filter results by YouTube channels
-# 5. Sort results by net profits (from highest to lowest)
+# 1. Defina variáveis
+# 2. Crie um CTE que arredonda a média de visualizações por vídeo
+# 3. Selecione as colunas que você precisa e crie colunas calculadas a partir das existentes
+# 4. Filtre os resultados por canais do YouTube
+# 5. Ordene os resultados por lucros líquidos (do maior para o menor)
 */
 
 
@@ -667,11 +665,11 @@ ORDER BY
 
 ![Most videos](assets/images/youtubers_with_the_most_videos.png)
 
-### 3. Youtubers with the most views
+### 3. YouTubers com mais visualizações
 
-#### Calculation breakdown
+#### Descrição do Cálculo
 
-Campaign idea = Influencer marketing
+Ideia de campanha = Influencer marketing
 
 a. DanTDM
 
@@ -706,11 +704,11 @@ Best option from category: Mister Max
 
 ```sql
 /*
-# 1. Define variables
-# 2. Create a CTE that rounds the average views per video
-# 3. Select the columns you need and create calculated columns from existing ones
-# 4. Filter results by YouTube channels
-# 5. Sort results by net profits (from highest to lowest)
+# 1. Defina variáveis
+# 2. Crie um CTE que arredonda a média de visualizações por vídeo
+# 3. Selecione as colunas que você precisa e crie colunas calculadas a partir das existentes
+# 4. Filtre os resultados por canais do YouTube
+# 5. Ordene os resultados por lucros líquidos (do maior para o menor)
 */
 
 
@@ -760,46 +758,46 @@ ORDER BY
 
 ![Most views](assets/images/youtubers_with_the_most_views.png)
 
-## Discovery
+## Descoberta
 
-- What did we learn?
+- O que aprendemos?
 
-We discovered that
+Aprendemos que
 
-1. NoCopyrightSOunds, Dan Rhodes and DanTDM are the channnels with the most subscribers in the UK
-2. GRM Daily, Man City and Yogscast are the channels with the most videos uploaded
-3. DanTDM, Dan RHodes and Mister Max are the channels with the most views
-4. Entertainment channels are useful for broader reach, as the channels posting consistently on their platforms and generating the most engagement are focus on entertainment and music
+1. NoCopyrightSOunds, Dan Rhodes e DanTDM são os canais com mais assinantes no Reino Unido
+2. GRM Daily, Man City e Yogscast são os canais com mais vídeos enviados
+3. DanTDM, Dan RHodes e Mister Max são os canais com mais visualizações
+4. Canais de entretenimento são úteis para alcance mais amplo, pois os canais que postam consistentemente nos seus plataformas e geram mais engajamento são focados em entretenimento e música
 
-## Recommendations
+## Recomendações
 
-- What do you recommend based on the insights gathered?
+- O que você recomenda com base nas descobertas obtidas?
 
-1. Dan Rhodes is the best YouTube channel to collaborate with if we want to maximize visbility because this channel has the most YouTube subscribers in the UK
-2. Although GRM Daily, Man City and Yogcasts are regular publishers on YouTube, it may be worth considering whether collaborating with them with the current budget caps are worth the effort, as the potential return on investments is significantly lower compared to the other channels.
-3. Mister Max is the best YouTuber to collaborate with if we're interested in maximizing reach, but collaborating with DanTDM and Dan Rhodes may be better long-term options considering the fact that they both have large subscriber bases and are averaging significantly high number of views.
-4. The top 3 channels to form collaborations with are NoCopyrightSounds, DanTDM and Dan Rhodes based on this analysis, because they attract the most engagement on their channels consistently.
+1. Dan Rhodes é o melhor canal do YouTube para colaborar se quisermos maximizar visibilidade porque este canal tem mais assinantes do YouTube no Reino Unido
+2. Embora GRM Daily, Man City e Yogcasts sejam editores regulares nos YouTube, pode ser que valha a pena considerar se colaborar com eles com o orçamento atual caps são um esforço para o retorno do investimento, pois o retorno do investimento potencial é significativamente menor comparado aos outros canais.
+3. Mister Max é o melhor YouTuber para colaborar se estivermos interessados em maximizar alcance, mas colaborar com DanTDM e Dan Rhodes pode ser uma opção melhor de longo prazo considerando o fato de que ambos têm grandes bases de assinantes e estão média significativamente alto número de visualizações.
+4. Os 3 canais principais para formar colaborações são NoCopyrightSounds, DanTDM e Dan Rhodes com base desta análise, porque eles atraem mais engajamento nos seus canais consistentemente.
 
-### Potential ROI
+### ROI Potencial
 
-- What ROI do we expect if we take this course of action?
+- Qual ROI esperamos se tomarmos este curso de ação?
 
-1. Setting up a collaboration deal with Dan Rhodes would make the client a net profit of $1,065,000 per video
-2. An influencer marketing contract with Mister Max can see the client generate a net profit of $1,276,000
-3. If we go with a product placement campaign with DanTDM, this could generate the client approximately $484,000 per video. If we advance with an influencer marketing campaign deal instead, this would make the client a one-off net profit of $404,000.
-4. NoCopyrightSounds could profit the client $642,000 per video too (which is worth considering)
+1. Configurar um acordo de colaboração com Dan Rhodes faria o cliente um lucro líquido de $1,065,000 por vídeo
+2. Um contrato de marketing de influenciador com Mister Max pode ver o cliente gerar um lucro líquido de $1,276,000
+3. Se optarmos por uma campanha de colocação de produtos com DanTDM, isso poderia gerar o cliente aproximadamente $484,000 por vídeo. Se avançarmos com um acordo de marketing de influenciador, isso faria o cliente um lucro líquido de um único de $404,000.
+4. NoCopyrightSounds poderia lucrar o cliente $642,000 por vídeo também (o que também vale considerar)
 
 ### Action plan
 
-- What course of action should we take and why?
+- Qual curso de ação devemos tomar e por quê?
 
-Based on our analysis, we beieve the best channel to advance a long-term partnership deal with to promote the client's products is the Dan Rhodes channel.
+Com base em nossa análise, acreditamos que o melhor canal para avançar um acordo de parceria de longo prazo para promover os produtos do cliente é o canal Dan Rhodes.
 
-We'll have conversations with the marketing client to forecast what they also expect from this collaboration. Once we observe we're hitting the expected milestones, we'll advance with potential partnerships with DanTDM, Mister Max and NoCopyrightSounds channels in the future.
+Vamos ter conversas com o cliente de marketing para prever o que eles também esperam desta colaboração. Uma vez observamos que estamos atingindo os marcos esperados, avançaremos com possíveis parcerias com canais NoCopyrightSounds, Mister Max e DanTDM no futuro.
 
-- What steps do we take to implement the recommended decisions effectively?
+- Quais etapas tomamos para implementar as decisões recomendadas de forma eficaz?
 
-1. Reach out to the teams behind each of these channels, starting with Dan Rhodes
-2. Negotiate contracts within the budgets allocated to each marketing campaign
-3. Kick off the campaigns and track each of their performances against the KPIs
-4. Review how the campaigns have gone, gather insights and optimize based on feedback from converted customers and each channel's audiences
+1. Entrar em contato com as equipes por trás de cada um desses canais, começando com Dan Rhodes
+2. Negociar contratos dentro dos orçamentos alocados para cada campanha de marketing
+3. Iniciar as campanhas e rastrear o desempenho de cada uma contra os KPI
+4. Revisar como as campanhas foram, coletar insights e otimizar com base em feedback de clientes convertidos e públicos de cada canal
