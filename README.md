@@ -1,6 +1,6 @@
 # Portfólio de Dados: Excel para Power BI
 
-![excel-to-powerbi-animated-diagram](assets/images/kaggle_to_powerbi.gif)
+![excel-to-powerbi-animated-diagram](/docs/assets/images/kaggle_to_powerbi.gif)
 
 # Índice
 
@@ -104,7 +104,7 @@ Alguns dos visuais de dados que podem ser apropriados para responder às nossas 
 3. Cartões de pontuação
 4. Gráfico de barras horizontal
 
-![Dashboard-Mockup](assets/images/dashboard_mockup.png)
+![Dashboard-Mockup](/docs/assets/images/dashboard_mockup.png)
 
 ## Ferramentas
 
@@ -241,7 +241,7 @@ FROM
 
 ```
 
-![Verificação de contagem de linhas](assets/images/1_row_count_check.png)
+![Verificação de contagem de linhas](/docs/assets/images/1_row_count_check.png)
 
 ## Verificação de contagem de colunas
 
@@ -263,7 +263,7 @@ WHERE
 
 ### Saída
 
-![Verificação de contagem de colunas](assets/images/2_column_count_check.png)
+![Verificação de contagem de colunas](/docs/assets/images/2_column_count_check.png)
 
 ## Verificação de tipo de dados
 
@@ -286,7 +286,7 @@ WHERE
 
 ### Saída
 
-![Verificação de tipo de dados](assets/images/3_data_type_check.png)
+![Verificação de tipo de dados](/docs/assets/images/3_data_type_check.png)
 
 ## Verificação de contagem de duplicatas
 
@@ -317,7 +317,7 @@ HAVING
 
 ### Saída
 
-![Verificação de contagem de duplicatas](assets/images/4_duplicate_records_check.png)
+![Verificação de contagem de duplicatas](/docs/assets/images/4_duplicate_records_check.png)
 
 # Visualização
 
@@ -325,7 +325,7 @@ HAVING
 
 - Como o painel deve ser?
 
-![GIF do Painel do Power BI](assets/images/top_uk_youtubers_2024.gif)
+![GIF do Painel do Power BI](/docs/assets/images/top_uk_youtubers_2024.gif)
 
 Este mostra os Top UK Youtubers em 2024 até agora.
 
@@ -572,7 +572,7 @@ ORDER BY
 
 #### Saída
 
-![Mais assinantes](assets/images/youtubers_with_the_most_subs.png)
+![Mais assinantes](/docs/assets/images/youtubers_with_the_most_subs.png)
 
 ### 2. YouTubers com mais vídeos enviados
 
@@ -663,7 +663,7 @@ ORDER BY
 
 #### Output
 
-![Most videos](assets/images/youtubers_with_the_most_videos.png)
+![Most videos](/docs/assets/images/youtubers_with_the_most_videos.png)
 
 ### 3. YouTubers com mais visualizações
 
@@ -756,7 +756,7 @@ ORDER BY
 
 #### Output
 
-![Most views](assets/images/youtubers_with_the_most_views.png)
+![Most views](/docs/assets/images/youtubers_with_the_most_views.png)
 
 ## Descoberta
 
